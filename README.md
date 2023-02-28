@@ -1,9 +1,9 @@
 # Cloning algorithm for measuring rare events from stochastic time series
 
-This class implements a cloning algorithm similar to those described in Refs. <a href="#ref_1">[1]</a>, 
+This module implements a cloning algorithm similar to those described in Refs. <a href="#ref_1">[1]</a>, 
 <a href="#ref_2">[2]</a>.
 
-## Problem: It is often infeasible to directly sample rare events
+## <a id="problem_statement"> Problem: It is often infeasible to directly sample rare events
 
 The cloning algorithm allows to measure probabilities of rare events of 
 Markov processes. The cloning algorithm can be applied to rare events that
@@ -25,7 +25,7 @@ often decays exponentially. In our example it decays as as -log(P) ~ T,
 so that one needs an unfeasibly large number of time series to get an
 acceptable estimate of the survival probability.
 
-## The cloning algorithm
+## <a id="cloning_algorithm"> The cloning algorithm
 
 The cloning algorithm solves this problem by dividing the time T into
 shorter n_iterations shorter time intervals of duration T/n_iterations.
@@ -58,11 +58,27 @@ in Fig. 2 and Appendix B of <a href="#ref_1">Ref. [1]</a>, as well as Fig. 1 and
 of Ref. <a href="#ref_2">Ref. [2]</a>. 
 
 
-## Example: Sojourn probability
+## <a id="examples"> Examples
+  
+### <a id="example_sojourn"> Sojourn probability
 
 More details coming soon. For now, see the jupyter notebook [examples/sojourn probability.ipynb](examples/sojourn%20probability.ipynb).
 
-## References
+
+
+## <a id="installation">  Installation
+
+To install the module cloning_algorithm, as well as its requirements ([NumPy](https://numpy.org/), [multiprocess](https://pypi.org/project/multiprocess/), and [h5py](https://pypi.org/project/h5py/), clone this repository and run the installation script:
+
+```bash
+>> git clone https://github.com/juliankappler/cloning_algorithm.git
+>> cd cloning_algorithm
+>> pip install -r requirements.txt
+>> pip install .
+```
+
+
+## <a id="references"> References
 
 <a id="ref_1">[1] **Experimental Measurement of Relative Path Probabilities and Stochastic Actions**. J. Gladrow, U. F. Keyser, R. Adhikari, and J. Kappler. Physical Review X, vol. 11, p. 031022, 2021. DOI: [10.1103/PhysRevX.11.031022](https://doi.org/10.1103/PhysRevX.11.031022).</a>
 
