@@ -60,7 +60,7 @@ of Ref. <a href="#ref_2">Ref. [2]</a>.
 
 ## Example: Sojourn probability
 
-More details coming soon. For now, see the jupyter notebook [examples/sojourn proabilitiy.ipynb](examples/sojourn proabilitiy.ipynb).
+More details coming soon. For now, see the jupyter notebook [examples/sojourn probability.ipynb](examples/sojourn%20probability.ipynb).
 
 ## References
 
