@@ -1,2 +1,3 @@
 # cloning_algorithm
-Cloning algorithm for measuring rare events from time series
+Cloning algorithm for measuring rare events from stochastic time series
+

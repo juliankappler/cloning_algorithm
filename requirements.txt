@@ -1,0 +1,4 @@
+###### Requirements for cloning_algorithm ######
+numpy
+multiprocess
+h5py
