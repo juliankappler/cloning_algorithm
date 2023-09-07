@@ -3,29 +3,35 @@
 This module implements a cloning algorithm similar to those described in Refs. <a href="#ref_1">[1]</a>, 
 <a href="#ref_2">[2]</a>.
 
-## <a id="problem_statement"> Problem: It is often infeasible to directly sample rare events
-
-The cloning algorithm allows to measure probabilities of rare events of 
-Markov processes. The cloning algorithm can be applied to rare events that
+The cloning algorithm allows to <b>measure probabilities of a class of rare events of 
+Markov processes</b>. More explicitly, the cloning algorithm can be used to measure probabilities of rare events that
 can be formulated as survival probabilities.
 
-For example, let us consider the following question: For the Wiener 
-process starting at x0 = 0, what is the survival probability P to never 
-leave the interval [-1,1] until time T?
+## <a id="problem_statement"> Problem: It is often infeasible to directly sample rare events
+
+For example, consider the following question: For a freely diffusion particle (Wiener 
+process) starting at <i>x(t=0) = 0</i>, what is the survival probability <i>P</i> to never 
+leave the interval <i>[-1,1]</i> until some large time <i>T</i>?
 
 One would naively measure this survival probability by generating a large
-number of time series (in our example: realizations of the Wiener 
-process), and evaluating the fraction of time series that fulfill the
-survival condition up to the final time (in our example: count how many 
-time series have never left the interval [-1,1] and divide by the total
-number of time series that were generated).
+number of sample time series, and evaluating the fraction of time series that fulfill the
+survival condition. 
+In our example this means generating <i>N</i> sample trajectories of the Wiener process (each of which starts at the origin),
+counting how many 
+sample time series of duration <i>T</i> have never left the interval
+<i>[-1,1]</i> (say <i>M</i>) and using the ratio <i>M/N</i> as an estimator 
+for the survival probability, <i>P approx M/N</i>.
 
 The problem with this naive approach is that the survival probability 
-often decays exponentially. In our example it decays as as -log(P) ~ T,
-so that one needs an unfeasibly large number of time series to get an
-acceptable estimate of the survival probability.
+often decays exponentially. In our example it decays as <i>-log(P) ~ T</i>,
+so that one needs an exponentially large number of time series to get an
+acceptable estimate of the survival probability. It is often infeasible to generate
+and analyze such a large number of time series.
 
-## <a id="cloning_algorithm"> The cloning algorithm
+## <a id="cloning_algorithm"> Solution: The cloning algorithm
+
+The cloning algorithm is a means for overcoming the exponential decay of 
+surviving samples.
 
 The cloning algorithm solves this problem by dividing the time T into
 shorter n_iterations shorter time intervals of duration T/n_iterations.
