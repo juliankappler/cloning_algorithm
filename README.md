@@ -7,7 +7,7 @@ The cloning algorithm allows to <b>measure probabilities of a class of rare even
 Markov processes</b>. More explicitly, the cloning algorithm can be used to measure probabilities of rare events that
 can be formulated as survival probabilities.
 
-## <a id="problem_statement"> Problem: It is often infeasible to directly sample rare events
+## <a id="problem_statement"> Problem: It is often infeasible to straightforwardly measure probabilities of rare events
 
 For example, consider the following question: For a freely diffusion particle (Wiener 
 process) starting at <i>x(t=0) = 0</i>, what is the survival probability <i>P</i> to never 
