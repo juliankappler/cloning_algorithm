@@ -33,31 +33,31 @@ and analyze such a large number of time series.
 The cloning algorithm is a means for overcoming the exponential decay of 
 surviving samples.
 
-The cloning algorithm solves this problem by dividing the time T into
-shorter n_iterations shorter time intervals of duration T/n_iterations.
-At the first time interval, n_clones time series are generated using the
-given initial conditions, and used to estimate the survival probability
-until time T/n_iterations. 
-For the second time interval, n_clones time series are then generated
-using as initial conditions that survivors from the previous iteration.
-The resulting time series are then used to estimate the survival 
-probability in the time interval [T/n_iterations, 2 * T/n_iterations].
-This process is repeated until the survival probability has been obtained
-up to time T.
+To do this, the algorithm divides the time interval <i>[0,T]</i> into
+ <i>n<sub>iterations</sub></i> shorter time intervals of duration <i>&Delta;T = T/n<sub>iterations</sub></i>,
+ and treats the survival probability for each interval separately:
+ 
+1. For the first interval <i>I<sub>0</sub> = [0, &Delta;T]</i>, <i>N<sup>(0)</sup><sub>clones</sub></i> time series are generated with the
+given problem initial conditions, and used to estimate the survival probability naively.
+2. For the second time interval <i>I<sub>1</sub> = [&Delta;T, 2&Delta;T]</i>,  <i>N<sup>(1)</sup><sub>clones</sub></i> time series are then generated,
+using as initial conditions the final positions of the survivors from the previous iteration. The resulting time series are then used to estimate the survival probability in the time interval <i>I<sub>1</sub></i>.
+3. Step 2 is repeated until the survival probability has been obtained up to time <i>T</i>.
 
-The "cloning" in the algorithm name comes from the fact that at the end of
-each iteration, we take the surviving final states (which are for 
-well-chosen durations T/n_iterations about one order of magnitutde 
-smaller in number than n_clones) and "clone" them by drawing n_clones
-initial conditions for the next iteration. By this we overcome the 
-(exponential) temporal decay of sample time series that fulfill the 
-survival condition. That this works is of course due to the assumed Markov
-property of the time series.
+The "cloning" in the name of the  algorithm comes from the fact that at the end of
+each iteration, we take the surviving final states and "clone" them by drawing
+initial conditions for the next iteration. Note that to be able to use the final positions of
+each batch of trajectories as initial conditions for the next batch, we assume
+that the time series is Markovian.
 
-The paragraphs above are a slightly simplified description. In
-particular, the actual cloning algorithm estimates a reasonable value for
-n_clones at each iteration based on the recent decay of the survival 
-probabiliy.
+By considering the survival problem on each interval separately, and periodically increasing
+the number of sample trajectories, we overcome the 
+exponential temporal decay of sample time series that fulfill the 
+survival condition. 
+
+For chosen duration <i>&Delta;T</i>, the implemented cloning algorithm 
+uses the recent decay of the survival probabiliy to estimates a reasonable value for
+the number of samples
+<i>N<sup>(i)</sup><sub>clones</sub></i> at each iteration.
 
 For a more detailed explanation for the cloning algorithm can be found
 in Fig. 2 and Appendix B of <a href="#ref_1">Ref. [1]</a>, as well as Fig. 1 and Appendix B 
@@ -69,7 +69,6 @@ of Ref. <a href="#ref_2">Ref. [2]</a>.
 ### <a id="example_sojourn"> Sojourn probability
 
 More details coming soon. For now, see the jupyter notebook [examples/sojourn probability.ipynb](examples/sojourn%20probability.ipynb).
-
 
 
 ## <a id="installation">  Installation
