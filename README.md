@@ -72,7 +72,7 @@ of Ref. <a href="#ref_2">Ref. [2]</a>.
 
 Example notebooks are provided in the folder [examples/](examples):
 
-* [examples/sojourn probability.ipynb](examples/sojourn%20probability.ipynb): In this notebook, we measure the survivial probability for freely diffusive stochastic dynamics to remain within a tube of radius $R$ around a given reference path $\varphi(t)$ (in this context the surviving probability is also called sojourn probability). We evaluate the decay rate corresponding to the survival probability, and compare the measured decay rate to theoretical predictions based on the Onsager-Machlup stochastic action.
+* [sojourn probability.ipynb](examples/sojourn%20probability.ipynb): In this notebook, we measure the survivial probability for freely diffusive stochastic dynamics to remain within a tube of radius $R$ around a given reference path $\varphi(t)$ (in this context the surviving probability is also called sojourn probability). We evaluate the decay rate corresponding to the survival probability, and compare the measured decay rate to theoretical predictions based on the Onsager-Machlup stochastic action.
 
  More notebooks to be added.
 
